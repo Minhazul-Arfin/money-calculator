@@ -26,7 +26,6 @@ document.getElementById('calculate-btn').addEventListener('click', function(){
     // SET VALUE FOR TOTAL EXPENSE
     const totalExpense = foodValue + rentValue + clothsValue;
     expenseField.innerText = totalExpense;
-    console.log(totalExpense);
 
     //SET VALUE FOR BALANCE
     const balance = incomeValue - totalExpense;
@@ -35,8 +34,28 @@ document.getElementById('calculate-btn').addEventListener('click', function(){
 })
 
 document.getElementById('save-btn').addEventListener('click', function(){
+    const totalIncomeField =  document.getElementById('income-txt-field');
+    const savePercentageField = document.getElementById('save-input-field');
+    const savingAmountResultField = document.getElementById('show-saving-amount');
+    const remainingBalanceResultField = document.getElementById('show-remaining-balance');
+    const balanceBeforePercentageField = document.getElementById('balance-txt-field');
+
+    const totalIncomeString = totalIncomeField.value;
+    const percentageString = savePercentageField.value;
+    const balanceBeforePercentageString = balanceBeforePercentageField.innerText;
+    // const finalBalanceString = remainingBalanceResultField.innerText;
     
-    
+
+    const totalIncome = parseFloat(totalIncomeString);
+    const percentage = parseFloat(percentageString);
+    const balanceBeforePercentage = parseFloat(balanceBeforePercentageString);
+    // const finalBalanceValue = parseFloat(finalBalanceString);
+
+    const percentageAmount = (percentage/100) * totalIncome;
+    const finalBalanceValue = balanceBeforePercentage - percentageAmount;
+
+    savingAmountResultField.innerText = percentageAmount;
+    remainingBalanceResultField.innerText = finalBalanceValue;
 
     
 })
